@@ -718,7 +718,10 @@ const Step4Confirmation = ({ emailList, forwardingEmail }: { emailList: string, 
   const gmailSearchUrl = `https://mail.google.com/mail/u/0/#search/${encodeURIComponent(`${orQuery} after:${afterStr} before:${beforeStr}`)}`;
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(forwardingEmail);
+    navigator.clipboard.writeText(forwardingEmail).then(() => {
+      // Optional: add feedback (toast, tooltip, etc.)
+      toast("Copied to Clipboard")
+    });
   };
 
   return (
